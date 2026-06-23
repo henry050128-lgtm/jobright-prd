@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)file:///Users/fengningliu/Downloads/Jobright_Competition_Filter_PRD.html -->
+<html lang="en" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRD · Competition Filter — Jobright</title>
+<style>
+  :root {
+    --ink: #16181d;
+    --ink-soft: #4a4f59;
+    --ink-faint: #868b96;
+    --line: #e6e7ea;
+    --line-soft: #f0f0f2;
+    --paper: #ffffff;
+    --wash: #f7f7f8;
+    --accent: #14a05a;
+    --accent-soft: #e7f5ee;
+    --accent-ink: #0c6e3d;
+    --amber: #c98a16;
+    --amber-soft: #fbf2dd;
+    --red: #c0392b;
+    --red-soft: #fae9e6;
+    --blue: #2f6fd0;
+    --blue-soft: #e8f0fb;
+    --radius: 14px;
+    --maxw: 760px;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--font);
+    color: var(--ink);
+    background: var(--wash);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+
+  /* ---- HERO ---- */
+  header.hero {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 56px 0 44px;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--accent-ink);
+    background: var(--accent-soft); padding: 5px 11px; border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  h1.title {
+    font-size: 34px; line-height: 1.18; font-weight: 700;
+    letter-spacing: -0.02em; margin-bottom: 14px;
+  }
+  h1.title span { color: var(--accent); }
+  .lede {
+    font-size: 18px; color: var(--ink-soft); max-width: 600px;
+  }
+  .meta {
+    margin-top: 26px; display: flex; flex-wrap: wrap; gap: 22px;
+    padding-top: 22px; border-top: 1px solid var(--line-soft);
+  }
+  .meta div { font-size: 13px; }
+  .meta .k { color: var(--ink-faint); text-transform: uppercase; letter-spacing: .04em; font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .meta .v { color: var(--ink); font-weight: 500; }
+
+  /* ---- SECTION ---- */
+  section { padding: 40px 0; border-bottom: 1px solid var(--line); background: var(--paper); }
+  section:nth-of-type(even) { background: var(--wash); }
+  .sec-num {
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    letter-spacing: .08em; margin-bottom: 8px; font-variant-numeric: tabular-nums;
+  }
+  h2 { font-size: 23px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 16px; }
+  h3 { font-size: 16px; font-weight: 650; margin: 22px 0 9px; }
+  p { color: var(--ink-soft); margin-bottom: 14px; }
+  p strong, li strong { color: var(--ink); font-weight: 650; }
+  .lead-p { font-size: 17px; color: var(--ink); }
+
+  /* ---- COMPARISON CARDS (the hook) ---- */
+  .compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 8px 0 6px;
+  }
+  .jobcard {
+    border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 18px; background: var(--paper); position: relative;
+  }
+  .jobcard.win { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .jobcard .co { font-size: 13px; color: var(--ink-faint); font-weight: 600; margin-bottom: 2px; }
+  .jobcard .role { font-size: 15px; font-weight: 650; margin-bottom: 14px; line-height: 1.3; }
+  .stat { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+  .stat .label { font-size: 12.5px; color: var(--ink-faint); }
+  .stat .match { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .stat .match.hi { color: var(--accent); }
+  .stat .match.mid { color: var(--amber); }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 12px;
+    font-weight: 600; padding: 4px 10px; border-radius: 100px; margin-top: 4px;
+  }
+  .pill .d { width: 7px; height: 7px; border-radius: 50%; }
+  .pill.low { background: var(--accent-soft); color: var(--accent-ink); }
+  .pill.low .d { background: var(--accent); }
+  .pill.high { background: var(--red-soft); color: var(--red); }
+  .pill.high .d { background: var(--red); }
+  .verdict {
+    margin-top: 14px; font-size: 12.5px; line-height: 1.5; padding-top: 12px;
+    border-top: 1px dashed var(--line); color: var(--ink-soft);
+  }
+  .verdict b { color: var(--ink); }
+  .badge-win {
+    position: absolute; top: -10px; right: 14px; background: var(--accent);
+    color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px;
+    border-radius: 100px; letter-spacing: .03em;
+  }
+
+  /* ---- CALLOUT ---- */
+  .callout {
+    border-left: 3px solid var(--accent); background: var(--accent-soft);
+    padding: 16px 18px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .callout p { margin: 0; color: var(--accent-ink); font-size: 15px; }
+  .callout p strong { color: var(--accent-ink); }
+
+  /* ---- VS TABLE ---- */
+  .vs { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 16px 0; }
+  .vs .row { display: grid; grid-template-columns: 1fr 1fr; }
+  .vs .row.head { background: var(--ink); }
+  .vs .row.head div { color: #fff; font-weight: 650; font-size: 13px; padding: 12px 16px; }
+  .vs .row.head div:first-child { background: #2a2d34; }
+  .vs .cell { padding: 13px 16px; font-size: 14px; border-top: 1px solid var(--line); }
+  .vs .cell.l { background: var(--wash); color: var(--ink-soft); border-right: 1px solid var(--line); }
+  .vs .cell.r { color: var(--ink); }
+  .vs .row:first-child .cell { border-top: none; }
+
+  /* ---- FLOW STEPS ---- */
+  .flow { counter-reset: step; margin: 14px 0; }
+  .step {
+    display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line-soft);
+  }
+  .step:last-child { border-bottom: none; }
+  .step .n {
+    counter-increment: step; flex: none; width: 28px; height: 28px;
+    border-radius: 50%; background: var(--ink); color: #fff;
+    display: grid; place-items: center; font-size: 13px; font-weight: 700;
+  }
+  .step .n::before { content: counter(step); }
+  .step.final .n { background: var(--accent); }
+  .step .txt { font-size: 14.5px; color: var(--ink-soft); padding-top: 3px; }
+  .step .txt b { color: var(--ink); }
+
+  /* ---- SOLUTION PIECES ---- */
+  .pieces { display: grid; gap: 12px; margin: 14px 0; }
+  .piece {
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px;
+    background: var(--paper); position: relative;
+  }
+  .piece .tag {
+    font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 6px; display: inline-block; margin-bottom: 8px;
+  }
+  .piece.p1 .tag { background: var(--accent-soft); color: var(--accent-ink); }
+  .piece.p2 .tag { background: var(--blue-soft); color: var(--blue); }
+  .piece.p3 .tag { background: var(--amber-soft); color: var(--amber); }
+  .piece h4 { font-size: 15.5px; font-weight: 650; margin-bottom: 5px; }
+  .piece p { font-size: 14px; margin: 0; }
+  .piece .first { position: absolute; top: 16px; right: 16px; font-size: 11px; font-weight: 700; color: var(--accent); background: var(--accent-soft); padding: 3px 9px; border-radius: 100px; }
+
+  /* ---- METRICS ---- */
+  .metrics { display: grid; gap: 10px; margin: 14px 0; }
+  .metric {
+    border: 1px solid var(--line); border-left: 3px solid var(--blue);
+    border-radius: 0 10px 10px 0; padding: 13px 16px; background: var(--paper);
+  }
+  .metric .layer { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--blue); margin-bottom: 4px; }
+  .metric.outcome { border-left-color: var(--accent); }
+  .metric.outcome .layer { color: var(--accent-ink); }
+  .metric p { font-size: 14px; margin: 0; color: var(--ink-soft); }
+  .metric p b { color: var(--ink); }
+
+  /* ---- RISKS ---- */
+  .risk { padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+  .risk:last-child { border-bottom: none; }
+  .risk .rt { font-weight: 650; font-size: 14.5px; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .risk .rt .ic { color: var(--amber); font-size: 16px; }
+  .risk p { font-size: 14px; margin: 0; }
+  .risk .mit { color: var(--accent-ink); font-size: 13.5px; margin-top: 5px; }
+
+  /* ---- FOOTER ---- */
+  footer { background: var(--ink); color: #c9ccd2; padding: 32px 0; text-align: center; }
+  footer p { color: #c9ccd2; font-size: 13.5px; margin: 0; }
+  footer .name { color: #fff; font-weight: 600; }
+
+  @media (max-width: 600px) {
+    h1.title { font-size: 27px; }
+    .lede { font-size: 16px; }
+    .compare { grid-template-columns: 1fr; }
+    h2 { font-size: 20px; }
+    section { padding: 32px 0; }
+    .vs .row.head div, .vs .cell { padding: 11px 12px; font-size: 13px; }
+  }
+</style>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="./PRD · Competition Filter — Jobright_files/m=el_main_css"></head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span>Product Requirements Document</span>
+    <h1 class="title">Competition Filter:<br>surface the roles you can <span>actually win</span></h1>
+    <p class="lede">Jobright tells you how well you match a job. It doesn't tell you how many people you're up against. This feature closes that gap.</p>
+    <div class="meta">
+      <div><div class="k">Product</div><div class="v">Jobright · Job Feed</div></div>
+      <div><div class="k">Type</div><div class="v">New feature</div></div>
+      <div><div class="k">Author</div><div class="v">Henry Liu</div></div>
+      <div><div class="k">Status</div><div class="v">Draft v1</div></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">01 · PROBLEM</div>
+    <h2>Match score is absolute. Job hunting is competitive.</h2>
+    <p class="lead-p">Jobright shows users how well they match a role, but not how contested it is. Users can't see or filter by applicant volume — so they spend limited application time on high-match but heavily contested roles, while overlooking high-match roles with far fewer applicants.</p>
+    <p>Here are two real roles from the same feed, shown side by side with no way to tell which is the smarter bet:</p>
+
+    <div class="compare">
+      <div class="jobcard">
+        <div class="co">Snowflake</div>
+        <div class="role">Product Finance Analyst</div>
+        <div class="stat"><span class="label">Match</span><span class="match mid">78%</span></div>
+        <div class="stat"><span class="label">Applicants</span><span style="font-weight:650;color:var(--red)">200+</span></div>
+        <span class="pill high"><span class="d"></span>High competition</span>
+        <div class="verdict">Lower fit, <b>200+ applicants</b> — your application is one of hundreds.</div>
+      </div>
+      <div class="jobcard win">
+        <span class="badge-win">SMARTER BET</span>
+        <div class="co">Itron, Inc.</div>
+        <div class="role">FP&amp;A Associate</div>
+        <div class="stat"><span class="label">Match</span><span class="match hi">94%</span></div>
+        <div class="stat"><span class="label">Applicants</span><span style="font-weight:650;color:var(--accent-ink)">&lt;25</span></div>
+        <span class="pill low"><span class="d"></span>Low competition</span>
+        <div class="verdict">Higher fit, <b>under 25 applicants</b> — far better odds of being seen.</div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--ink-faint);margin-top:10px;">The Itron role is both a better fit and far less contested — yet the feed gives no way to prioritize by competition.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">02 · COMPETITIVE CONTEXT</div>
+    <h2>LinkedIn proves the need — but only does half of it</h2>
+    <p>LinkedIn's "Under 10 applicants" filter is widely cited as one of its most valuable job-search filters, confirming that competition is a dimension users actively want. But LinkedIn treats fit and competition as <strong>separate</strong> signals, and puts deeper applicant insights behind a paid tier.</p>
+    <p>Jobright has a structural advantage LinkedIn lacks: a <strong>match score on every role</strong>. That lets Jobright do what LinkedIn can't — combine fit and competition into one view.</p>
+
+    <div class="vs">
+      <div class="row head"><div>LinkedIn today</div><div>Jobright's opportunity</div></div>
+      <div class="row">
+        <div class="cell l">One fixed threshold ("Under 10")</div>
+        <div class="cell r">Multiple tiers — under 25 / 50 / 100</div>
+      </div>
+      <div class="row">
+        <div class="cell l">Fit &amp; competition shown separately</div>
+        <div class="cell r">Combined into one "best bet" view</div>
+      </div>
+      <div class="row">
+        <div class="cell l">Deeper insight is paywalled</div>
+        <div class="cell r">Built on data already in the feed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">03 · WHY IT MATTERS</div>
+    <h2>For high-volume applicants, competition is the missing signal</h2>
+    <p>A high match score reflects fit, but not a candidate's odds of being noticed. For new grads and entry-level users applying at volume with limited time, a <strong>94% match with 20 applicants</strong> is a far better use of effort than a 78% match with 200+.</p>
+    <div class="callout">
+      <p><strong>This serves Jobright's own promise.</strong> The product already pledges to "save 80% of job search time" and surface "only roles you can win." Making competition visible is a direct expression of that mission.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">04 · TARGET USER</div>
+    <h2>Who this is for</h2>
+    <h3>Primary</h3>
+    <p>New grads and entry-level job seekers (0–2 years) applying at high volume with limited time — the users most hurt by wasting applications on contested roles, and Jobright's core early-career segment.</p>
+    <h3>Secondary</h3>
+    <p>Career switchers who match well on transferable skills but need to be strategic about where they spend effort.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">05 · SOLUTION</div>
+    <h2>Make competition a first-class signal</h2>
+    <p>Built from applicant-volume data Jobright already displays. Three connected pieces, shipped in priority order:</p>
+
+    <div class="pieces">
+      <div class="piece p1">
+        <span class="first">Ship first</span>
+        <span class="tag">Filter</span>
+        <h4>Competition filter</h4>
+        <p>Filter the feed by applicant volume across multiple tiers — Under 25 / 50 / 100 — instead of one fixed threshold. Solves the core need with the least engineering, since the data and filter system already exist.</p>
+      </div>
+      <div class="piece p2">
+        <span class="tag">Label</span>
+        <h4>Competition indicator</h4>
+        <p>On each job card, a simple Low / Medium / High competition tag next to the match score, so users can scan it at a glance without opening filters.</p>
+      </div>
+      <div class="piece p3">
+        <span class="tag">Sort</span>
+        <h4>"Best Bet" sort</h4>
+        <p>A sort that ranks roles by combining high match score with low competition — surfacing the highest-value applications first.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>Why filter first?</strong> It's the core of the feature, the cheapest to build on existing data, and the fastest way to validate the need. If usage and callback data prove it out, label and sort follow.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">06 · HOW IT WORKS</div>
+    <h2>One user, one search</h2>
+    <div class="flow">
+      <div class="step"><div class="n"></div><div class="txt">Henry opens his feed, filtered to <b>Financial Analyst · New Grad · US</b>.</div></div>
+      <div class="step"><div class="n"></div><div class="txt">He applies <b>Competition filter → Under 50 applicants</b>. The 200+ applicant roles drop out of view.</div></div>
+      <div class="step"><div class="n"></div><div class="txt">Each remaining card shows both signals — the Itron role reads <b>94% match · Low competition</b>.</div></div>
+      <div class="step"><div class="n"></div><div class="txt">He switches sort to <b>"Best Bet"</b>: high-match, low-competition roles rise to the top.</div></div>
+      <div class="step final"><div class="n"></div><div class="txt">He spends his limited time on the roles where he has the <b>best realistic odds</b> — instead of applying broadly and hoping.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">07 · SUCCESS METRICS</div>
+    <h2>How we'd know it works</h2>
+    <div class="metrics">
+      <div class="metric">
+        <div class="layer">Adoption</div>
+        <p><b>25%+</b> of weekly active job seekers apply the Competition filter at least once within 2 weeks of launch.</p>
+      </div>
+      <div class="metric">
+        <div class="layer">Behavior change</div>
+        <p>Among filter users, the <b>average applicant-count of roles they apply to drops</b> versus non-users.</p>
+      </div>
+      <div class="metric outcome">
+        <div class="layer">Outcome — the one that matters</div>
+        <p>Measurably <b>higher interview / callback rate</b> for applications to low-competition roles. This is the whole point: time spent where odds are better.</p>
+      </div>
+      <div class="metric">
+        <div class="layer">Business</div>
+        <p>Does landing interviews faster lift <b>retention and free-to-paid conversion?</b> A user who succeeds stays and recommends.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">08 · RISKS &amp; OPEN QUESTIONS</div>
+    <h2>What could go wrong</h2>
+    <div class="risk">
+      <div class="rt"><span class="ic">⚠</span>Data accuracy</div>
+      <p>Applicant counts may lag or be inaccurate, mislabeling a contested role as "low competition."</p>
+      <p class="mit">→ Mitigation: show ranges ("Under 50"), not false-precision exact numbers, and timestamp the data.</p>
+    </div>
+    <div class="risk">
+      <div class="rt"><span class="ic">⚠</span>Herd effect</div>
+      <p>If everyone filters for low-competition roles, those roles become high-competition. Open question: does surfacing them erode the advantage over time?</p>
+    </div>
+    <div class="risk">
+      <div class="rt"><span class="ic">⚠</span>Match-score dependency</div>
+      <p>"Best Bet" sort is only as reliable as the match score behind it. Noisy match scores weaken the combined signal.</p>
+    </div>
+    <div class="risk">
+      <div class="rt"><span class="ic">⚠</span>Discouraging reach applications</div>
+      <p>Some strong candidates <em>should</em> apply to competitive roles. The feature is about awareness, not avoidance — it shouldn't scare users off ambitious bets.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><span class="name">Henry Liu</span> · Product Requirements Document · Jobright Competition Filter</p>
+    <p style="margin-top:6px;opacity:.7;">Drafted as a product exercise based on the live Jobright experience.</p>
+  </div>
+</footer><div id="goog-gt-tt" class="VIpgJd-yAWNEb-L7lbkb skiptranslate" style="border-radius: 12px; margin: 0 0 0 -23px; padding: 0; font-family: &#39;Google Sans&#39;, Arial, sans-serif;" data-id=""><div id="goog-gt-vt" class="VIpgJd-yAWNEb-hvhgNd"><div class="VIpgJd-yAWNEb-hvhgNd-Ud7fr"><img src="./PRD · Competition Filter — Jobright_files/24px.svg" width="24" height="24" alt=""><div class=" VIpgJd-yAWNEb-hvhgNd-IuizWc-i3jM8c " dir="ltr">原文</div></div><div class="VIpgJd-yAWNEb-hvhgNd-k77Iif"><div id="goog-gt-original-text" class="VIpgJd-yAWNEb-nVMfcd-fmcmS VIpgJd-yAWNEb-hvhgNd-axAV1"></div></div><div class="VIpgJd-yAWNEb-hvhgNd-N7Eqid ltr"><div class="VIpgJd-yAWNEb-hvhgNd-N7Eqid-B7I4Od ltr" dir="ltr"><div class="VIpgJd-yAWNEb-hvhgNd-UTujCb">请对此翻译评分</div><div class="VIpgJd-yAWNEb-hvhgNd-eO9mKe">您的反馈将用于改进谷歌翻译</div></div><div class="VIpgJd-yAWNEb-hvhgNd-xgov5 ltr"><button id="goog-gt-thumbUpButton" type="button" class="VIpgJd-yAWNEb-hvhgNd-bgm6sf" title="翻译质量很棒" aria-label="翻译质量很棒" aria-pressed="false"><span id="goog-gt-thumbUpIcon"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M21 7h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 0S7.08 6.85 7 7H2v13h16c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73V9c0-1.1-.9-2-2-2zM7 18H4V9h3v9zm14-7l-3 7H9V8l4.34-4.34L12 9h9v2z"></path></svg></span><span id="goog-gt-thumbUpIconFilled"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M21 7h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 0S7.08 6.85 7 7v13h11c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73V9c0-1.1-.9-2-2-2zM5 7H1v13h4V7z"></path></svg></span></button><button id="goog-gt-thumbDownButton" type="button" class="VIpgJd-yAWNEb-hvhgNd-bgm6sf" title="翻译质量很差" aria-label="翻译质量很差" aria-pressed="false"><span id="goog-gt-thumbDownIcon"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M3 17h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 24s7.09-6.85 7.17-7h5V4H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2zM17 6h3v9h-3V6zM3 13l3-7h9v10l-4.34 4.34L12 15H3v-2z"></path></svg></span><span id="goog-gt-thumbDownIconFilled"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M3 17h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 24s7.09-6.85 7.17-7V4H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2zm16 0h4V4h-4v13z"></path></svg></span></button></div></div><div id="goog-gt-votingHiddenPane" class="VIpgJd-yAWNEb-hvhgNd-aXYTce"><form id="goog-gt-votingForm" action="file://translate.googleapis.com/translate_voting?client=te_lib" method="post" target="votingFrame" class="VIpgJd-yAWNEb-hvhgNd-aXYTce"><input type="text" name="sl" id="goog-gt-votingInputSrcLang"><input type="text" name="tl" id="goog-gt-votingInputTrgLang"><input type="text" name="query" id="goog-gt-votingInputSrcText"><input type="text" name="gtrans" id="goog-gt-votingInputTrgText"><input type="text" name="vote" id="goog-gt-votingInputVote"></form><iframe name="votingFrame" frameborder="0" src="./PRD · Competition Filter — Jobright_files/saved_resource.html"></iframe></div></div></div>
+
+
+
+</body></html>
